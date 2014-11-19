@@ -23,12 +23,18 @@ class GameWindow < Gosu::Window
 
   def update
     @player.move
-    #control_player
+    control_player
     @asteroids.each      { |asteroid| asteroid.move  }
     @asteroids.reject!   { |asteroid| asteroid.dead? }
     detect_collisions
     @projectiles.each    { |projectile| projectile.move  }
     @projectiles.reject! { |projectile| projectile.dead? }
+  end
+
+  def control_player
+    if button_down? Gosu::KbUp
+      @player.accelerate
+    end
   end
 
   def button_down(id)
