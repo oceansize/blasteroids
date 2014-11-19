@@ -12,14 +12,6 @@ class Player
     @image.draw_rot(@x, @y, 0, @angle) # Draws from the centre, final argument is the angle
   end
 
-  def turn_left
-    @angle -= 4.5
-  end
-
-  def turn_right
-    @angle += 4.5
-  end
-
   def accelerate
     @velocity_x += Gosu::offset_x(@angle, 0.18)
     @velocity_y += Gosu::offset_y(@angle, 0.18)
